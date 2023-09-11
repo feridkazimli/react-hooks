@@ -19,12 +19,9 @@ const App = () => {
     setUsers(users.concat({ id: uuidv4(), name: text }));
   };
 
-  const handleRemove = useCallback(
-    (id) => {
+  const handleRemove = (id) => {
       setUsers(users.filter((user) => user.id !== id));
-    },
-    [users]
-  );
+  };
 
   return (
     <div>
@@ -38,7 +35,7 @@ const App = () => {
   );
 };
 
-const List = React.memo(({ list, onRemove }) => {
+const List = ({ list, onRemove }) => {
   console.log("List");
   return (
     <ul>
@@ -47,9 +44,9 @@ const List = React.memo(({ list, onRemove }) => {
       ))}
     </ul>
   );
-});
+};
 
-const ListItem = React.memo(({ item, onRemove }) => {
+const ListItem = ({ item, onRemove }) => {
   console.log("ListItem");
   return (
     <li>
@@ -59,6 +56,6 @@ const ListItem = React.memo(({ item, onRemove }) => {
       </button>
     </li>
   );
-});
+};
 
 export default App;
